@@ -8,6 +8,8 @@ const notes = new NotesManagers()
 const UsersManagers = require("./data/fs/UsersManagers.js")
 const users = new UsersManagers()
 
+
+//la funcion tiene que ser async
 async function router(req, res) {
   const url = req.url;
   console.log(url);
@@ -19,12 +21,13 @@ async function router(req, res) {
       res.writeHead(200, options).end("API CONECTADA");
       break;
       case "/api/notes":
+        //como es metodo async se debe agregar la palabra await
         const all = await notes.read()
         res.writeHead(200,options).end(JSON.stringify(all))
         break;
         case "/users":
-            const users = await users.read()
-            res.writeHead(200,options).end(JSON.stringify(users))
+          const user = await users.read()
+            res.writeHead(200,options).end(JSON.stringify(user))
             break;
     default: //Se envia una respuesta cuando la pagina no existe
         res.writeHead(404, options).end("Ruta no encontrada")

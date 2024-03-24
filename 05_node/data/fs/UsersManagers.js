@@ -27,14 +27,14 @@ module.exports = class UsersManagers {
         const note = {
           id: crypto.randomBytes(12).toString("hex"),
           email: data.email,
-          photo: data.photo
+          photo: data.photo || "./default.jpg"
         };
         let all = await fs.promises.readFile(this.path, "utf-8");
         all = JSON.parse(all);
         all.push(note);
         all = JSON.stringify(all, null, 2);
         await fs.promises.writeFile(this.path, all);
-        console.log("Nota creada");
+        console.log("Usuario creada");
         return note;
       }
     } catch (error) {
@@ -56,7 +56,7 @@ module.exports = class UsersManagers {
       all = JSON.parse(all);
       let one = all.find((each) => each.id === id);
       if (!one) {
-        throw new Error("No encontrado");
+        throw new Error("Usuario no encontrado");
       } else {
         console.log(one);
         return one;
@@ -71,12 +71,12 @@ module.exports = class UsersManagers {
       all = JSON.parse(all);
       let one = all.find((each) => each.id === id);
       if (!one) {
-        throw new Error("No EXISTE");
+        throw new Error("El usuario no existe");
       } else {
         let filtered = all.filter((each) => each.id !== id);
         filtered = JSON.stringify(filtered, null, 2);
         await fs.promises.writeFile(this.path, filtered);
-        console.log("Nota eliminada");
+        console.log("Usuario eliminada");
         console.log(one)
         return one;
       }

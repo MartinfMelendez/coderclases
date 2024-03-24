@@ -13,6 +13,5 @@ const ready = () => console.log("server ready on port" + port);
 //Levantamos el servidor con el metodo listen
 server.listen(port, ready);
 
-
 //por defecto el servidor no se reinicia de forma automatico
 //para reinicar el server con cada cambio necesitamos instalar nodemon
