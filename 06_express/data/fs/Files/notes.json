@@ -1,0 +1,14 @@
+[
+  {
+    "id": "a724859c78addac64a20c65c",
+    "text": "primera nota",
+    "category": "done",
+    "date": "2024-03-25T16:11:43.922Z"
+  },
+  {
+    "id": "a40bec88a0313c8f97aaf31a",
+    "text": "segunda nota",
+    "category": "to do",
+    "date": "2024-03-25T16:11:56.611Z"
+  }
+]
