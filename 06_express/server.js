@@ -78,7 +78,7 @@ server.get("/api/notes", async (req, res) => {
 server.get("/api/notes/category", async (req, res) => {
   try {
     const { category } = req.query;
-    const all = await notesManager.read(category);
+    const all = await notesManager.readOne(category);
     if (all > 0) {
       return res.status(200).json({ response: all, category, succes: true });
     } else {

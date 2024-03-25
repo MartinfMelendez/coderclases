@@ -62,6 +62,7 @@ class NotesManagers {
       let all = await fs.promises.readFile(this.path, "utf-8");
       all = JSON.parse(all);
       let one = all.find((each) => each.id === id);
+      
       if (!one) {
         throw new Error("No encontrado");
       } else {
